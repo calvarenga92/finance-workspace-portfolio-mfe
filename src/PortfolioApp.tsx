@@ -1,13 +1,24 @@
 import './styles.css';
 import { useMemo, useState } from 'react';
-import { portfolioAssets, type Asset } from './data/portfolio';
+import { portfolioAssets, type Asset, type AssetStatus } from './data/portfolio';
 import { SummaryCard } from './components/SummaryCard';
 
 const statusOptions = ['Todos', 'Ativo', 'Observação', 'Rebalanceando'] as const;
 type StatusFilter = (typeof statusOptions)[number];
 
+const statusChipClass: Record<AssetStatus, string> = {
+  Ativo: 'status-chip--active',
+  Observação: 'status-chip--watchlist',
+  Rebalanceando: 'status-chip--rebalancing',
+};
+
+const percentFormatter = new Intl.NumberFormat('pt-BR', {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
+
 function formatPercent(value: number) {
-  return `${value.toFixed(1)}%`;
+  return `${percentFormatter.format(value)}%`;
 }
 
 function getPnlClass(value: number) {
@@ -74,7 +85,7 @@ export default function PortfolioApp() {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Ex.: ITSA4 or Bitcoin"
+              placeholder="Ex.: ITSA4 ou Bitcoin"
             />
           </label>
 
@@ -113,7 +124,7 @@ export default function PortfolioApp() {
                   <td>{formatPercent(asset.allocation)}</td>
                   <td className={getPnlClass(asset.pnl)}>{formatPercent(asset.pnl)}</td>
                   <td>
-                    <span className={`status-chip status-chip--${asset.status.toLowerCase()}`}>
+                    <span className={`status-chip ${statusChipClass[asset.status]}`}>
                       {asset.status}
                     </span>
                   </td>
@@ -122,7 +133,7 @@ export default function PortfolioApp() {
             ) : (
               <tr>
                 <td colSpan={6} className="empty-state">
-                  No assets found for the selected filters.
+                  Nenhum ativo encontrado para os filtros selecionados.
                 </td>
               </tr>
             )}
