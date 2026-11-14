@@ -11,6 +11,8 @@ export default defineConfig({
       filename: 'remoteEntry.js',
       exposes: {
         './PortfolioApp': './src/PortfolioApp.tsx',
+        './Overview': './src/Overview.tsx',
+        './RiskMonitor': './src/RiskMonitor.tsx',
       },
       shared: ['react', 'react-dom'],
     }),

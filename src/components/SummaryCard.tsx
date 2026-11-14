@@ -7,10 +7,10 @@ type SummaryCardProps = PropsWithChildren<{
 
 export function SummaryCard({ label, helper, children }: SummaryCardProps) {
   return (
-    <section className="summary-card">
-      <span className="summary-card__label">{label}</span>
-      <strong className="summary-card__value">{children}</strong>
-      <small className="summary-card__helper">{helper}</small>
+    <section className="pf-kpi">
+      <span className="pf-kpi__label">{label}</span>
+      <strong className="pf-kpi__value">{children}</strong>
+      <small className="pf-kpi__helper">{helper}</small>
     </section>
   );
 }
