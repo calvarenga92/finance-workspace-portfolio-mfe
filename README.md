@@ -6,6 +6,11 @@ Aqui eu quis simular um cenário real onde uma parte da aplicação é construí
 
 ---
 
+## Design e fluxo de UX
+
+- [Telas no Figma](https://www.figma.com/design/hJCeJcqbtxRG9aBBcd3yW8?node-id=3-2)
+- [Fluxo de UX no Figma](https://www.figma.com/design/uTnOgVhzcVUIGBXPrWHoCf?node-id=26-271): abrir um módulo e o que a pessoa vê quando o remoto cai
+
 ## Sobre o projeto
 
 Esse micro frontend representa uma tela de **visualização de ativos financeiros**, com informações como:
